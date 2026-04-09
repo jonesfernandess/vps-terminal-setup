@@ -223,11 +223,10 @@ EOF
 configure_zellij() {
     print_header "Configuring Zellij"
 
-    mkdir -p "${ZELLIJ_CONFIG_DIR}/layouts"
+    mkdir -p "${ZELLIJ_CONFIG_DIR}"
 
     print_step "Copying Zellij config from repo..."
     cp "${SCRIPT_DIR}/zellij/config.kdl" "${ZELLIJ_CONFIG_DIR}/config.kdl"
-    cp "${SCRIPT_DIR}/zellij/layouts/dev.kdl" "${ZELLIJ_CONFIG_DIR}/layouts/dev.kdl"
 
     print_done "Zellij configured"
 }
