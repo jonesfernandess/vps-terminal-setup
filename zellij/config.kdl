@@ -1,0 +1,4 @@
+// Zellij config — only overrides, defaults apply for everything else
+
+theme "catppuccin-mocha"
+auto_layout false

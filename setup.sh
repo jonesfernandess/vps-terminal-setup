@@ -6,9 +6,9 @@ set -euo pipefail
 # and configures zsh on macOS, Linux, or Windows (WSL/Git Bash).
 # =============================================================================
 
-ZELLIJ_THEME="catppuccin-mocha"
 ZELLIJ_CONFIG_DIR="${HOME}/.config/zellij"
 ZSHRC="${HOME}/.zshrc"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # -----------------------------------------------------------------------------
 # Helpers
@@ -225,36 +225,11 @@ configure_zellij() {
 
     mkdir -p "${ZELLIJ_CONFIG_DIR}/layouts"
 
-    # Generate default config if not present
-    if [ ! -f "${ZELLIJ_CONFIG_DIR}/config.kdl" ]; then
-        print_step "Generating default Zellij config..."
-        zellij setup --dump-config > "${ZELLIJ_CONFIG_DIR}/config.kdl"
-    fi
+    print_step "Copying Zellij config from repo..."
+    cp "${SCRIPT_DIR}/zellij/config.kdl" "${ZELLIJ_CONFIG_DIR}/config.kdl"
+    cp "${SCRIPT_DIR}/zellij/layouts/dev.kdl" "${ZELLIJ_CONFIG_DIR}/layouts/dev.kdl"
 
-    # Set theme
-    if grep -q '// theme "default"' "${ZELLIJ_CONFIG_DIR}/config.kdl" 2>/dev/null; then
-        print_step "Setting Zellij theme to ${ZELLIJ_THEME}..."
-        sed -i.bak "s|// theme \"default\"|theme \"${ZELLIJ_THEME}\"|" "${ZELLIJ_CONFIG_DIR}/config.kdl"
-        rm -f "${ZELLIJ_CONFIG_DIR}/config.kdl.bak"
-    fi
-
-    # Create dev layout
-    if [ ! -f "${ZELLIJ_CONFIG_DIR}/layouts/dev.kdl" ]; then
-        print_step "Creating dev layout..."
-        cat > "${ZELLIJ_CONFIG_DIR}/layouts/dev.kdl" << 'EOF'
-layout {
-    pane split_direction="vertical" {
-        pane size="60%"
-        pane split_direction="horizontal" {
-            pane size="70%"
-            pane size="30%"
-        }
-    }
-}
-EOF
-    fi
-
-    print_done "Zellij configured (theme: ${ZELLIJ_THEME})"
+    print_done "Zellij configured"
 }
 
 # -----------------------------------------------------------------------------
