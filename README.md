@@ -10,6 +10,12 @@ Setup script that installs and configures a modern terminal environment on any O
 - **starship** — minimal, fast, cross-shell prompt
 - **zellij** — terminal multiplexer with Catppuccin Mocha theme
 
+## What it configures
+
+- `~/.zshrc` with Starship, autosuggestions, and completions
+- `~/.config/starship.toml` from `starship/starship.toml`
+- `~/.config/zellij/config.kdl` from `zellij/config.kdl`
+
 ## Supported platforms
 
 | OS | Package manager |

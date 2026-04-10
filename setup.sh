@@ -7,6 +7,7 @@ set -euo pipefail
 # =============================================================================
 
 ZELLIJ_CONFIG_DIR="${HOME}/.config/zellij"
+STARSHIP_CONFIG_DIR="${HOME}/.config"
 ZSHRC="${HOME}/.zshrc"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -232,6 +233,21 @@ configure_zellij() {
 }
 
 # -----------------------------------------------------------------------------
+# Configure starship
+# -----------------------------------------------------------------------------
+
+configure_starship() {
+    print_header "Configuring Starship"
+
+    mkdir -p "${STARSHIP_CONFIG_DIR}"
+
+    print_step "Copying Starship config from repo..."
+    cp "${SCRIPT_DIR}/starship/starship.toml" "${STARSHIP_CONFIG_DIR}/starship.toml"
+
+    print_done "Starship configured"
+}
+
+# -----------------------------------------------------------------------------
 # Set zsh as default shell
 # -----------------------------------------------------------------------------
 
@@ -283,6 +299,7 @@ main() {
     esac
 
     configure_zsh
+    configure_starship
     configure_zellij
     set_default_shell
 
