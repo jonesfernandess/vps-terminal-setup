@@ -4,11 +4,11 @@ Setup script that installs and configures a modern terminal environment on any O
 
 ## What it installs
 
-- **zsh** — shell (if not already present)
-- **zsh-autosuggestions** — suggests commands as you type (accept with right arrow)
-- **zsh-completions** — tab completion for common tools
-- **starship** — minimal, fast, cross-shell prompt
-- **zellij** — terminal multiplexer with Catppuccin Mocha theme
+- **[zsh](https://www.zsh.org/)** — shell (if not already present)
+- **[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)** — suggests commands as you type (accept with right arrow)
+- **[zsh-completions](https://github.com/zsh-users/zsh-completions)** — tab completion for common tools
+- **[starship](https://starship.rs/)** — minimal, fast, cross-shell prompt
+- **[zellij](https://zellij.dev/)** — terminal multiplexer with Catppuccin Mocha theme
 
 ## What it configures
 
